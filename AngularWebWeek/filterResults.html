@@ -1,0 +1,121 @@
+<html ng-app="tableDisplay">
+<head>
+
+	<script src="js/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+
+	<script>
+	var mod = angular.module("tableDisplay", []);
+
+	var resultsLogic = function($scope){
+			
+		var records = [
+		{regno:42, name: 'abcKhan', marks: 42, group: 'Java', client:'IBM'},
+		{regno:57, name: 'abc', marks: 95, group: '.Net', client:'MyDad'},
+		{regno:57, name: 'elliot', marks: 98, group: 'Java', client:'MyDad'},
+		{regno:57, name: 'smith', marks: 90, group: 'JavaScript', client:'MyDad'},
+		{regno:82, name: 'john', marks: 125, group: 'Big Data', client:'Brillo'},
+		{regno:12, name: 'kylie', marks: 22, group: 'Java', client:'IBM'},
+		{regno:13, name: 'flitheroe', marks: 140, group: '.Net', client:'MyDad'},
+		{regno:14, name: 'todd', marks: 99, group: 'Big Data', client:'Brillo'},
+		{regno:15, name: 'james', marks: 95, group: '.Net', client:'IBM'},
+		{regno:16, name: 'oliver', marks: 0, group: 'Java', client:'MyDad'},
+		{regno:16, name: 'oliver', marks: 0, group: 'Big Data', client:'Brillo'}
+		];
+
+		$scope.recs = records;
+		}
+
+	mod.filter("percentage", function(){
+		return function(X){
+			return (X*100/150);
+		}
+
+	});
+
+	mod.filter("result", function(){
+		return function(marks){
+			if(marks>=60){
+				//window.document.getElementById("result")
+				return "Pass!";
+			}
+			if(marks<60){
+				
+				return "Fail."
+			}
+		}
+	});
+
+	mod.filter("passAColor", function(){
+		return function(X){
+			if(X >= 60){
+				return "passColor";
+			}
+			else{
+				return "failColor";
+			}
+		}
+	})
+	mod.controller("displayResults", resultsLogic);
+
+
+	</script>
+
+</head>
+
+<body>
+
+	<div ng-controller="displayResults">
+
+	<fieldset>Group:
+		<input type="radio" ng-model="search.group" value="Java">Java
+		<input type="radio" ng-model="search.group" value=".Net">.Net
+		<input type="radio" ng-model="search.group" value="Big Data">Big Data
+		<input type="radio" ng-model="search.group" value="">Any
+	</fieldset>
+
+	<br>
+	<fieldset>
+	Results:
+		<input type="radio" ng-model="search.marks" value="">Pass
+		<input type="radio" ng-model="search.marks" value="">Fail
+		<input type="radio" ng-model="search.marks" value="">Any
+	</fieldset>
+
+	<br>
+	<fieldset>
+	Client: 
+		<input type="radio" ng-model="search.client" value="IBM">IBM
+		<input type="radio" ng-model="search.client" value="MyDad">myDad
+		<input type="radio" ng-model="search.client" value="Brillo">Brillo
+		<input type="radio" ng-model="search.client" value="">Any
+	</fieldset>
+
+	<br>
+	<input ng-model="d">
+
+	<table>
+	<tr>
+		<th>Registration</th>
+		<th>Name</th>
+		<th>Marks</th>
+		<th>Percentage</th>
+		<th>Result</th>
+	</tr>
+
+	<tr ng-repeat = "r in recs | filter:search:false | limitTo:d">
+		<td>{{r.regno}}</td>
+		<td>{{r.name}}</td>
+		<td>{{r.marks}}</td>
+		<td>{{r.group}}</td>
+		<td>{{r.client}}</td>
+		<td>{{r.marks | percentage | number:2}}</td>
+		<td class="{{r.marks | passAColor}}">{{r.marks | percentage | result}}</td>
+	</tr>
+
+	</table>
+	</div>
+</body>
+</html>
+
+ 

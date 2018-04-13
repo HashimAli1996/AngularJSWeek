@@ -1,0 +1,82 @@
+<html ng-app="sportReview">
+<head>
+
+	<script src="js/angular.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script>
+
+	var mod = angular.module("sportReview", []);
+
+	var resultsLogic = function($scope){
+
+		$scope.hello = "hi bbs";
+
+		var lAndDtbl = [
+		{sport: "Football", likes:0, dislikes:0},
+		{sport: "Cricket", likes:0, dislikes:0},
+		{sport: "Rugby", likes:0, dislikes:0},
+		{sport: "Snooker", likes:0, dislikes:0},
+		{sport: "Ice Skating", likes:0, dislikes:0}
+		];
+
+		$scope.dataTable = lAndDtbl;
+		
+		$scope.results = function(data){
+			if((data.likes || data.dislikes) == 0){
+				return "*******";
+			} else if(data.likes > data.dislikes){
+				return "More likes";
+			} else if(data.likes < data.dislikes){
+				return "More dislikes";
+			} else if(data.likes == data.dislikes){
+				return "Like and dislikes are equal!";
+			}		
+		};
+		
+
+		$scope.addLike = function(data){
+			return data.likes=data.likes+1;
+		};
+
+		$scope.addDislike = function(data){
+			return data.dislikes=data.dislikes+1;
+		};
+
+	}
+
+	mod.controller("daLikes", resultsLogic);
+
+	</script>
+
+</head>
+
+<body>
+
+	<div ng-controller="daLikes">
+	<table>
+	<tr>
+		<th>Sports</th>
+		<th>Likes</th>
+		<th>Dislikes</th>
+		<th>Result</th>
+	</tr>
+	<tr ng-repeat="data in dataTable">
+		<td>{{data.sport}}</td>
+		<td>{{data.likes}}</td>
+		<td>{{data.dislikes}}</td>
+		<td>{{results(data)}}</td>
+
+		<td><input type="button" name="likePlus" value="Like" ng-click="addLike(data)"></td>
+		<td><input type="button" name="dislikePlus" value="Dislike" ng-click="addDislike(data)"></td>
+	</tr>
+
+	</table>
+
+
+
+
+	</div>
+</body>
+</html>
+
+ 

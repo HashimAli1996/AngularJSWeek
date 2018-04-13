@@ -1,0 +1,48 @@
+.box {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+}
+
+.box.top { top: 0; }
+.box.right { right: 0; }
+.box.left: { left: 0; }
+.box.bottom { bottom: 0 }
+
+.diamond {
+	width: 0;
+	height: 0;
+	border: 150px solid transparent;
+	border-bottom-color: green;
+	position: relative;
+	top: -150px;
+}
+.diamond:after {
+	content: '';
+	position: absolute;
+	left: -150px;
+	top: 150px;
+	width: 0;
+	height: 0;
+	border: 150px solid transparent;
+	border-top-color: green;
+}
+
+.block{
+	width:100px;
+	height: 50px;
+	border: solid;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 50px;
+}
+
+.block.inline{
+	display: inline-block;
+}
+
+.block.noborder{
+	border: none;
+}
+
+

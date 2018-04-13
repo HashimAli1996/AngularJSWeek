@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+
+<html>
+<script>
+	
+function what(){
+	window.document.f1.a.value="hello my firendsz";
+}
+
+function add(){
+	var no1 = window.document.forms[1].elements[0].value;
+	var no2 = window.document.forms[1].elements[1].value;
+
+	if(no1 === ""){
+		window.alert("first num missing");
+		window.document.forms[1].elements[0].focus();
+	} else {
+		if(no2 === ""){
+			window.alert("second num missing");
+			window.document.forms[1].elements[1].focus();
+		} else {
+			window.document.forms[1].elements[2].value = parseInt(no1) + parseInt(no2);
+		}
+	}
+}
+
+function add2() {
+	var e = 0;
+
+	for(; e < window.document.forms[2].elements.length; e++){
+
+		if (window.document.forms[2].elements[e].type === "text") {
+
+			if(window.document.forms[2].elements[e].value === ""){
+				window.alert("Element " + (e+1) + " is empty");
+				window.document.forms[2].elements[e].focus();
+			} 
+
+		}
+
+	}
+}
+
+function go1(){
+	window.document.getElementById("jumpup").style.top = window.event.clientY;
+	window.document.getElementById("jumpup").style.left = window.event.clientX;
+}
+
+</script>
+
+<body onmousemove="go1()">
+<form name="f1">
+	<input type="text" name="a">
+	<br>
+	<input type="button" onclick="what()">
+</form>
+
+<form name="two">
+	<input>
+	<br>
+	<input>
+	<br>
+	<input>
+	<br>
+	<input type="button" onclick="add()" value="add">
+</form>
+
+<form name="three">
+	<input>
+	<br>
+	<input>
+	<br>
+	<input>
+	<br>
+	<input type="button" onclick="add2()" value="add2">
+</form>
+
+<div id="jumpup">
+
+<h1 style="position: absolute;top: 300;left: 400">JUMP UP</h1>
+
+</div>
+</body>
+</html>

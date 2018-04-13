@@ -1,0 +1,82 @@
+<html ng-app="qa">
+<head>
+	<title></title>
+
+		<script src="js/angular.js"></script>
+		<script>
+		var obj = angular.module("qa", []);
+		var f1 = function($scope){
+			$scope.message = "hello i am hashim";
+		};
+
+		obj.controller("ctrl", f1);
+
+		obj.controller("recCtrl", function($scope){
+			var record = {
+				regNo : 25,
+				name : 'peter',
+				marks : 75
+			};
+
+			$scope.info = record;
+
+			$scope.name = "Hashim";
+
+			$scope.nameFunc = function(){
+				$scope.a = 15;
+				return " My name is " + $scope.name;
+			}
+
+			$scope.addTwo = function(num1, num2){
+			
+				return num1 + num2;
+			}
+		});
+
+		var dataCtrl = function($scope){
+			$scope.data = "Hashim";
+		};
+
+		obj.controller("ctrl", dataCtrl);
+	</script>
+
+</head>
+
+<body>
+
+
+
+
+	<div ng-controller="ctrl">
+
+	{{message}}
+
+	</div>
+
+
+	<div ng-controller="recCtrl">
+
+	{{info}}
+
+	<br>{{name}}
+
+	<br> Mesaage: {{nameFunc()}}
+
+	<br>{{a}}
+
+	<br>{{addTwo(8, 2)}}
+
+	</div>
+
+	<div ng-controller="ctrl">
+
+	<input type="text" ng-model="data">
+
+	{{data}}
+
+	</div>
+
+</body>
+</html>
+
+ 

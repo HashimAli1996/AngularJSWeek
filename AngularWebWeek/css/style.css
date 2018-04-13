@@ -1,0 +1,12 @@
+.passColor{
+	color:green;
+}
+
+.failColor{
+	color:red;
+}
+
+.block{
+	display: block;
+	position: middle;
+}

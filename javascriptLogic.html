@@ -1,0 +1,58 @@
+<html>
+
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="square.css">
+
+</head>
+
+<script>
+
+	fsize = 10;
+	function go(){
+		
+
+	window.document.getElementById("x").style.top = window.event.clientY;
+	window.document.getElementById("x").style.left = window.event.clientX + 10;
+
+	if(window.event.ctrlKey){
+		fsize++;
+	}
+
+	if(window.event.altKey){
+		fsize--;
+	}
+
+	window.document.getElementById("x").style.fontSize = fsize;
+}
+
+function changeColor(colour){
+	window.document.getElementById("x").style.color=colour;
+}
+
+
+</script>
+
+<body onmousemove="go()">
+
+<div id="greenSq" class="diamond" onmouseenter="changeColor('green')">
+
+</div>
+
+<div id="redSq" class="box top right" style="background-color: red;" onmouseenter="changeColor('red')">
+
+</div>
+
+<div id="blueSq" class="box bottom left" style="background-color
+: blue;" onmouseenter="changeColor('blue')">
+
+</div>
+
+<div id="yellowSq" class="box bottom right" style="background-color: #8A2BE2;" onmouseenter="changeColor('#8A2BE2')">
+
+</div>
+
+<span id="x" style="position: absolute;top: 0; left: 0">QA Consulting</span>
+
+</body>
+</html>

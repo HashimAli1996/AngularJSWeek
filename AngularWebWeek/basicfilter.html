@@ -1,0 +1,58 @@
+<html ng-app="basicFilter">
+<head>
+
+	<script src="js/angular.js"></script>
+	<script>
+
+		var mod = angular.module("basicFilter", []);
+
+
+
+		var bFlogic = function($scope){
+			
+			$scope.field='marks';
+
+			$scope.order=false;
+
+			$scope.data = [
+			{regno:1, name:"peter", marks: 95},
+			{regno:2, name:"adam", marks: 75},
+			{regno:3, name:"john", marks: 65}
+			]
+		};
+
+		mod.controller("filterResults", bFlogic);
+
+		
+
+	</script>
+
+</head>
+
+<body>
+
+	<div ng-controller="filterResults">
+
+	<table style="border: solid;">
+	
+	<th>
+		<td ng-click="field = 'regno'; order = !order">regno</td>
+		<td ng-click="field = 'name'; order = !order">name</td>
+		<td ng-click="field = 'marks'; order = !order">marks</td>
+	</th>
+
+	<tr ng-repeat="d in data | orderBy:field:order | limitTo:d">
+	<td>{{d.regno}}</td>
+	<td>{{d.name}}</td>
+	<td>{{d.marks}}</td>
+	</tr>
+
+	</table>
+
+	<input ng-model="d">
+	
+	</div>
+</body>
+</html>
+
+ 

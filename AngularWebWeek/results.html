@@ -1,0 +1,43 @@
+<html ng-app="results">
+<head>
+
+	<script src="js/angular.js"></script>
+	<script>
+
+	var mod = angular.module("results", []);
+
+	var resultsLogic = function($scope){
+		$scope.chemistry = 0;
+		$scope.biology = 0;
+		$scope.parseInt = parseInt;
+		}
+
+	mod.controller("resultsCtrl", resultsLogic);
+
+
+	</script>
+
+</head>
+
+<body>
+
+	<div ng-controller="resultsCtrl">
+
+	Chemistry Mark:<input type="number" ng-model="chemistry"><br>
+	Biology Mark:<input type="text" ng-model="biology"><br>
+
+	Total: {{chemistry + parseInt(biology)}}<br>
+
+	Chem Result: <b ng-if="chemistry >= 50">
+		You passed Chemistry!
+	</b><br>
+
+
+	Bio Result: <b ng-if="biology >= 50">
+		You passed Biology!
+	</b><br>
+
+</body>
+</html>
+
+ 

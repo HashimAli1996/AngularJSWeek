@@ -1,0 +1,55 @@
+<html>
+
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="square.css">
+
+</head>
+
+<script>
+
+function checklogin(){
+		if(window.document.getElementById('usr').value == "" 
+			|| window.document.getElementById('pwd').value == ""){
+			alert("USERNAME OF PASSWORD CANNOT BE EMPTY");
+			return false;
+		} else {
+			window.document.getElementById('f1').action='process.html';
+			window.document.f1.submit();
+		}
+}
+
+function checkloginn(value){
+		var hotmail = "hotmail";
+		var gmail = "gmail";
+		var qa = "qa";
+
+		if(window.document.getElementById('usr').value == "" 
+			|| window.document.getElementById('pwd').value == ""){
+			alert("USERNAME OF PASSWORD CANNOT BE EMPTY");
+			return false;
+		} else {
+
+			if()
+
+			window.document.getElementById('f1').action='process.html';
+			window.document.f1.submit();
+		}
+}
+
+
+
+</script>
+
+<form id="f1" name="f1" method="post" onsubmit="return checklogin()">
+
+	username:<input type="text" id="usr" name="usr"><br>
+	password:<input type="password" id="pwd" name="pwd">
+	<input type="submit" value="Login"><br>
+	
+	<img src="cat.jpg" onclick="checkloginn()" style="height: 450px; width: 650px;">
+
+</form>
+
+
+</html>

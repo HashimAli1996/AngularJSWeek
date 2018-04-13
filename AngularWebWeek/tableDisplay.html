@@ -1,0 +1,57 @@
+<html ng-app="tableDisplay">
+<head>
+
+	<script src="js/angular.js"></script>
+	<script>
+
+	var mod = angular.module("tableDisplay", []);
+
+	var resultsLogic = function($scope){
+			
+		var records = [
+		{regno:42, name: 'peter', marks: 42},
+		{regno:57, name: 'smith', marks: 95},
+		{regno:82, name: 'john', marks: 125},
+		{regno:12, name: 'kylie', marks: 22},
+		{regno:13, name: 'flitheroe', marks: 140},
+		{regno:14, name: 'todd', marks: 99},
+		{regno:15, name: 'james', marks: 95},
+		{regno:16, name: 'oliver', marks: 0},
+		];
+
+		$scope.recs = records;
+
+		}
+
+	mod.controller("displayResults", resultsLogic);
+
+
+	</script>
+
+</head>
+
+<body>
+
+	<div ng-controller="displayResults">
+	<table>
+		<th>Registration</th>
+		<th>Name</th>
+		<th>Marks</th>
+		<th>Percentage</th>
+		<th>Result</th>
+		<tr ng-repeat = "r in recs">
+			<td>{{r.regno}}</td>
+			<td>{{r.name}}</td>
+			<td>{{r.marks}}</td>
+			<td>{{(r.marks * 100) / 150 | number:2}}</td>
+			<td ng-if="((r.marks * 100) / 150) >= 60" style="color:green">You have Passed!</td>
+			<td ng-if="((r.marks * 100) / 150) < 60" style="color:red">You have Failed.</td>
+		</tr>
+	</table>
+	
+
+	</div>
+</body>
+</html>
+
+ 

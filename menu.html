@@ -1,0 +1,63 @@
+<html>
+
+<head>
+	
+	<link rel="stylesheet" type="text/css" href="square.css">
+
+</head>
+
+<script>
+
+function changeColor(id){
+	window.document.getElementById(id).style.backgroundColor='red';
+	window.document.getElementById(id).style.border='solid blue';
+}
+
+function returnColor(id){
+	window.document.getElementById(id).style.backgroundColor='white';
+	window.document.getElementById(id).style.border='solid black';
+}
+
+function changeVisibility(id){
+
+	if(id == 'countryMenu'){
+		window.document.getElementById(id).style.visibility='visible';
+		window.document.getElementById('sportsMenu').style.visibility='hidden';
+	}
+
+	if(id == 'sportsMenu'){
+		window.document.getElementById(id).style.visibility='visible';
+		window.document.getElementById('countryMenu').style.visibility='hidden';
+	}
+}
+
+</script>
+
+<body>
+
+<div id="country" class="block inline" onmouseenter="changeVisibility('countryMenu')"
+ style="position: relative;">countries</div>
+<div id="sports" class="block inline" onmouseenter="changeVisibility('sportsMenu')" style="position: relative;">sports</div>
+
+<div id="countryMenu" class="block noborder" style="visibility: hidden; position: absolute;">
+		<div id="uk" class="block" onmouseenter="changeColor('uk')" 
+								   onmouseleave="returnColor('uk')">uk</div>
+		<div id="usa" class="block" onmouseenter="changeColor('usa')" 
+								    onmouseleave="returnColor('usa')">usa</div>
+		<div id="india" class="block" onmouseenter="changeColor('india')" 
+								   	  onmouseleave="returnColor('india')">india</div>
+	</div>
+
+
+
+<div id="sportsMenu" class="block noborder" style="visibility: hidden; position: absolute; left: 118px;">
+		<div id="cricket" class="block" onmouseenter="changeColor('cricket')" 
+										onmouseleave="returnColor('cricket')">cricket</div>
+		<div id="football" class="block" onmouseenter="changeColor('football')" 												 onmouseleave="returnColor('football')">football</div>
+		<div id="snooker" class="block" onmouseenter="changeColor('snooker')" 
+										onmouseleave="returnColor('snooker')">snooker</div>
+	</div>
+
+
+</body>
+</html>
