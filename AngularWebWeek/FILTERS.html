@@ -1,0 +1,30 @@
+<html ng-app>
+<script src="js/angular.js"></script>
+<h2> String Filters: </h2>
+upper case:{{'Bright Future LTD'|uppercase}}<br>
+Lower Case:{{'Bright Future LTD'|lowercase}}<br><br>
+
+Number Filter:{{5645.5675|number:2}}<br>
+Number Filter:{{5645.5|number:3}}<br><br>
+
+Default Currency​:{{34|currency}}<br>
+Pound Currency:{{34|currency: '&#x20A4':4}}<br><br>
+
+
+Date:{{12345|date}}<br>
+Date(date and time):{{12345|date:'medium'}}<br>
+Date(only Date):{{12345|date:'mediumDate'}}<br>
+Date(only 4 digit Year):{{12345|date:'yyyy'}}<br>
+Date(only 2 digit Year):{{12345|date:'yy'}}<br>
+Date(only digital month):{{12345|date:'M'}}<br>
+Date(only digital month):{{12345|date:'MM'}}<br>
+
+Date(only String month):{{12345|date:'MMMM'}}<br>
+Date(Day of the month ):{{12345|date:'d'}}<br>
+Date(Day of the month ):{{12345|date:'dd'}}<br>
+Date(Day in a week ):{{12345|date:'EEEE'}}<br>
+Date(Day in a week ):{{12345|date:'EEE'}}<br>
+Date(week of the Year ):{{12345|date:'ww'}}<br>
+Date(week of the Year ):{{12345|date:'w'}}<br>
+Date(my date ):{{12345|date:'yyyy-yy--MM'}}<br>
+</html>

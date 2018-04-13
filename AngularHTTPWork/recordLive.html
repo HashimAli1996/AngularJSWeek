@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="recordLive">
+<head>
+	<script src="js/angular.js"></script>
+
+	<script>
+	var mod = angular.module("recordLive", []);
+	
+	var liveLogic = function($scope){
+		$scope.data = [
+			{regno:75, name:"hashim", marks: 90},
+			{regno:76, name:"Nothashim", marks: 60},
+			{regno:77, name:"DefoNotHashim", marks: 30}
+		];
+
+		$scope.tempdata = [
+			{regno:0, name:"", marks: 0}
+		];
+
+		$scope.removeData = function(R){
+			$scope.data.splice($scope.data.indexOf(R), 1);
+		};
+
+		$scope.addRecord = function(){
+			$scope.data.push($scope.tempdata);
+			$scope.tempdata = [
+				{regno:0, name:"", marks: 0}
+			];
+		};
+	}
+
+	mod.controller("liveUpdate", liveLogic);
+	</script>
+</head>
+
+<body>
+
+<div ng-controller="liveUpdate">
+<table>
+	<tr>
+	<th>RegNo</th>	
+	<th>Name</th>
+	<th>Marks</th>
+	</tr>
+	<tr ng-repeat="record in data">
+		<td>{{record.regno}}</td>
+		<td>{{record.name}}</td>
+		<td>{{record.marks}}</td>
+		<td><input type="button" value="Remove" ng-click="removeData(record)"></td>
+	</tr>
+</table>
+
+<div>
+	<form>
+		RegNo: <input ng-model="tempdata.regno"><br>
+		Name: <input ng-model="tempdata.name"><br>
+		Marks: <input ng-model="tempdata.marks"><br>
+		<input type="button" value="Add Record" ng-click="addRecord()">
+	</form>
+
+</div>
+
+</div>
+
+	
+</body>
+</html>
+
+ 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html ng-app="ngIncludeResult">
+<head>
+	<script src="js/angular.js"></script>
+
+	<script>
+	var mod = angular.module("ngIncludeResult", []);
+	
+	var selectDataLogic = function($scope){
+
+		$scope.consultantRecords = [
+			{regno:1, name: "hashim"},
+			{regno:2, name: "Abdi"}
+		];
+
+		$scope.trainerRecords = [
+			{regno:1, name: "John"},
+			{regno:2, name: "Shafeeq"}
+		];
+
+		$scope.fname="";
+	}
+
+	mod.controller("selectData", selectDataLogic)
+	</script>
+</head>
+
+<body>
+
+<div ng-controller="selectData">
+	<select ng-model="fname">
+		<option value="record1.html">Consultants</option>
+		<option value="record2.html">Trainers</option>
+		<option value="">plain</option>
+	</select>
+
+	<div ng-include="fname">
+		
+
+	</div>
+
+</div>
+
+	
+</body>
+</html>
+
+ 

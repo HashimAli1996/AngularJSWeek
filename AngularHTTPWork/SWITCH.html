@@ -1,0 +1,19 @@
+<html ng-app>
+
+
+<script src="js/angular.js"></script>
+<select ng-model='selection'>
+<option value='1' selected> Java </option>
+<option value='2'> vb.net </option>
+<option value='3'> C Sharp </option>
+</select>
+{{selection}}
+<Div ng-switch on="selection">
+<div ng-switch-when="1"> Programming in JAva </div>
+<div ng-switch-when="2"> Mictosoft Visual Basic.net </div>
+<div ng-switch-when="3"> C SHarp ### </div>
+<div ng-switch-default> {{select}} donot know what is this</div>
+
+</Div>
+
+</html>

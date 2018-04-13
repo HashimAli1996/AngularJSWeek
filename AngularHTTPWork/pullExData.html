@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html ng-app="pullExData">
+<head>
+	<script src="js/angular.js"></script>
+
+	<script>
+	var mod = angular.module("pullExData", []);
+	
+	var exLogic = function($scope, $http){
+		$http(
+			{method:"get",
+			url:"https://api.github.com/users/HashimAli1996"
+		}
+		).then(function(response){
+			$scope.data = response.data;
+		});
+	};
+
+	var exLogic2 = function($scope, $http){
+		$http.get("https://api.github.com/users/HashimAli1996")
+			 .then(function(response){
+			$scope.data = response.data;
+			});
+	};
+
+	var exLogic3 = function($scope, $http){
+		$http.get("https://jsonplaceholder.typicode.com/posts")
+			 .then(function(response){
+			$scope.data = response.data;
+			});
+	};
+
+	mod.controller("exUpdate", exLogic);
+
+	mod.controller("exUpdate2", exLogic2);
+
+	mod.controller("exUpdate3", exLogic3);
+	</script>
+</head>
+
+<body>
+
+<div ng-controller="exUpdate" style="border: 5px dotted red;">
+
+{{data.login}}<br>
+{{data.id}}<br>
+{{data.html_url}}
+
+</div>
+
+<div ng-controller="exUpdate2" style="border: 5px dotted blue;">
+
+{{data.login}}<br>
+{{data.id}}<br>
+{{data.html_url}}
+
+</div>
+
+<div ng-controller="exUpdate3" style="border: 10px dotted; border-color: red green blue #551a8b;">
+<table>
+	<tr>
+	<th>userId:</th>	
+	<th>id:</th>
+	<th>title:</th>
+	<th>body:</th>
+	</tr>
+	<tr ng-repeat="record in data | limitTo : 10">
+		<td>{{record.userId}}</td>
+		<td>{{record.id}}</td>
+		<td>{{record.title}}</td>
+		<td>{{record.body}}</td>
+	</tr>
+</table>
+
+</div>
+
+	
+</body>
+</html>
+
+ 
